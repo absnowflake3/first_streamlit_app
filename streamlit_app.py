@@ -6,7 +6,6 @@ from urllib.error import URLError
 streamlit.title('My Parents new healthy diner')
 
 
-
 streamlit.header('Breakfast Favorites')
 streamlit.text('🥣 Omega 3 & Blueberry Oatmeal')
 streamlit.text('🥗 Kale, Spinach & Rocket Smoothie')
@@ -15,9 +14,7 @@ streamlit.text('🥑🍞 Avocado Toast')
 
 
 
-
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
-
 
 
 
@@ -27,9 +24,7 @@ fruits_selected = streamlit.multiselect("Pick some fruits : ",list(my_fruit_list
 fruits_to_show=my_fruit_list.loc[fruits_selected]
 
 
-
 streamlit.dataframe(fruits_to_show)
-
 
 
 def get_fruityvice_data(this_fruit_choice):
@@ -58,6 +53,7 @@ if streamlit.button('Get Fruit load List'):
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
   my_data_rows = get_fruit_load_list()
   streamlit.dataframe(my_data_rows)
+  
   
 def insert_row_snowflake(new_fruit):
   with my_cnx.cursor() as my_cur:
